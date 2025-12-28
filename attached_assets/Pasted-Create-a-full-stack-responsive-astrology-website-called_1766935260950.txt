@@ -1,0 +1,103 @@
+Create a full-stack responsive astrology website called "Ujjval Astro".
+
+Tech Stack:
+- Frontend: HTML, CSS, JavaScript (use modern clean UI)
+- Backend: Node.js with Express
+- Database: MongoDB (or JSON for demo if DB setup is complex)
+- Payment: Razorpay integration (test mode)
+- Authentication: Simple user login/signup (email + password)
+- Mobile responsive design
+
+Main Pages & Features:
+
+1. Home Page
+- Header with logo text "Ujjval Astro"
+- Navigation menu: Home | Horoscopes | Astrology Consultation | Puja Booking | Shop | Login
+- Hero section with astrology theme
+- Short introduction about astrology and services
+- Footer with contact info and social links
+
+2. Horoscopes Section
+- Show general horoscope information for all 12 zodiac signs
+- Each sign should have:
+  - Name
+  - Symbol
+  - Short daily horoscope text
+- Data can be static JSON for now
+- Clean card-based layout
+
+3. Astrology Consultation Page
+- Form to collect:
+  - Full Name
+  - Date of Birth
+  - Time of Birth
+  - Place of Birth
+  - Gender (optional)
+  - Problem description (textarea)
+- Show pricing options (example: ₹199 / ₹499)
+- After form submission:
+  - Redirect to payment page
+  - After successful payment, show confirmation:
+    "Our astrologer will contact you shortly"
+
+4. Book Pandit / Puja Services Page
+- List different pujas:
+  - Griha Pravesh Puja
+  - Satyanarayan Puja
+  - Navgraha Puja
+  - Marriage Puja
+- Each puja card should have:
+  - Description
+  - Price
+  - "Book Now" button
+- Booking form:
+  - Name
+  - Date
+  - Location
+  - Puja type
+- Payment integration before confirmation
+
+5. E-Commerce Shop Page
+- Product categories:
+  - Rudraksha
+  - Gemstones
+  - Puja Samagri
+  - Yantras
+- Each product should have:
+  - Image
+  - Name
+  - Price
+  - Add to Cart button
+- Simple cart functionality
+- Checkout with Razorpay
+
+6. Admin Panel (Basic)
+- Admin login
+- View:
+  - Consultation requests
+  - Puja bookings
+  - Orders from shop
+- No advanced role management required
+
+7. Design Requirements
+- Astrology theme colors (purple, gold, dark blue)
+- Clean fonts
+- Smooth hover effects
+- Simple animations
+- Mobile-first layout
+
+8. Extra
+- Add dummy astrologer profiles (name, experience, specialization)
+- Add disclaimer section: "Astrology results may vary"
+- SEO-friendly page titles
+
+Generate all necessary files:
+- index.html
+- styles.css
+- script.js
+- server.js
+- package.json
+- Sample data files
+
+Provide clear comments in code for easy understanding.
+Make the project runnable directly on Replit.
