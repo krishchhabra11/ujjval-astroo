@@ -48,7 +48,7 @@ export const api = {
       method: 'GET' as const,
       path: '/api/user',
       responses: {
-        200: z.custom<typeof users.$inferSelect | null>(), // Returns null if not logged in
+        200: z.custom<typeof users.$inferSelect | null>(),
       },
     },
   },
@@ -141,7 +141,16 @@ export const api = {
         401: errorSchemas.unauthorized,
       },
     },
-  }
+  },
+  chat: {
+    method: 'POST' as const,
+    path: '/api/chat',
+    input: z.object({ message: z.string() }),
+    responses: {
+      200: z.object({ message: z.string() }),
+      500: errorSchemas.internal,
+    },
+  },
 };
 
 export function buildUrl(path: string, params?: Record<string, string | number>): string {

@@ -5,6 +5,10 @@ import { storage } from "./storage";
 import { api } from "@shared/routes";
 import { z } from "zod";
 import { products, pujas } from "@shared/schema";
+import OpenAI from "openai";
+
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
 import { db } from "./db";
 
 export async function registerRoutes(
@@ -103,6 +107,24 @@ export async function registerRoutes(
   app.get(api.admin.orders.path, requireAdmin, async (req, res) => {
     const items = await storage.getOrders();
     res.json(items);
+  });
+
+  app.post(api.chat.path, async (req, res) => {
+    try {
+      const { message } = api.chat.input.parse(req.body);
+      const completion = await openai.chat.completions.create({
+        model: "gpt-4o",
+        messages: [
+          { role: "system", content: "You are an expert Vedic astrologer. Answer questions about astrology, horoscopes, and compatibility. Be mystical but helpful." },
+          { role: "user", content: message }
+        ],
+      });
+      const response = completion.choices[0].message.content;
+      res.json({ message: response });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: "Error processing request" });
+    }
   });
 
   // Seed Data
