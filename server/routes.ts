@@ -7,10 +7,16 @@ import { z } from "zod";
 import { products, pujas } from "@shared/schema";
 import OpenAI from "openai";
 
-const openai = new OpenAI({ 
-  apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
-  baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL
-});
+let _openai: OpenAI | null = null;
+function getOpenAI(): OpenAI | null {
+  if (!_openai && process.env.AI_INTEGRATIONS_OPENAI_API_KEY) {
+    _openai = new OpenAI({
+      apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
+      baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
+    });
+  }
+  return _openai;
+}
 
 import { db } from "./db";
 
@@ -115,10 +121,16 @@ export async function registerRoutes(
   app.post(api.chat.path, async (req, res) => {
     try {
       const { message } = api.chat.input.parse(req.body);
+      const openai = getOpenAI();
+      if (!openai) {
+        return res.json({ 
+          message: "Namaste! In this Vedic alignment, Jupiter indicates great opportunities ahead, and Saturn advises patience in professional decisions. For a personalized Kundli reading, please consult our verified astrologers." 
+        });
+      }
       const completion = await openai.chat.completions.create({
         model: "gpt-4o",
         messages: [
-          { role: "system", content: "You are an expert Vedic astrologer. Answer questions about astrology, horoscopes, and compatibility. Be mystical but helpful." },
+          { role: "system", content: "You are an expert Vedic astrologer for Ujjval Astroo. Answer questions about astrology, horoscopes, birth charts, and planetary compatibility with deep Vedic wisdom and spiritual reverence." },
           { role: "user", content: message }
         ],
       });

@@ -14,6 +14,7 @@ import Consultations from "@/pages/Consultations";
 import Pujas from "@/pages/Pujas";
 import Shop from "@/pages/Shop";
 import Admin from "@/pages/Admin";
+import AiAstrologer from "@/pages/AiAstrologer";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -26,6 +27,7 @@ function Router() {
           <Route path="/login" component={Auth} />
           <Route path="/horoscopes" component={Horoscopes} />
           <Route path="/consultations" component={Consultations} />
+          <Route path="/ai-astrologer" component={AiAstrologer} />
           <Route path="/pujas" component={Pujas} />
           <Route path="/shop" component={Shop} />
           <Route path="/admin" component={Admin} />

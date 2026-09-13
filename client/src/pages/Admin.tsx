@@ -1,4 +1,4 @@
-import { useAdminConsultations, useAdminBookings, useAdminOrders } from "@/hooks/use-consultations";
+import { useAdminConsultations } from "@/hooks/use-consultations";
 import { useUser } from "@/hooks/use-auth";
 import { useLocation } from "wouter";
 import { useEffect } from "react";

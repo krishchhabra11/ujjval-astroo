@@ -149,7 +149,7 @@ export default function Consultations() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-gray-300">Gender</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select onValueChange={field.onChange} defaultValue={field.value || "male"}>
                         <FormControl>
                           <SelectTrigger className="bg-white/5 border-white/10 text-white focus:border-primary/50">
                             <SelectValue placeholder="Select Gender" />
